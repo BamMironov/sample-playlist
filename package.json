@@ -1,0 +1,46 @@
+{
+  "name": "sample-playlist",
+  "version": "1.0.0",
+  "description": "test task",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --mode development --hot",
+    "build-prod": "webpack --mode=production",
+    "build-dev": "webpack --mode=development"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BamMironov/sample-playlist.git"
+  },
+  "author": "Artem Mironov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BamMironov/sample-playlist/issues"
+  },
+  "homepage": "https://github.com/BamMironov/sample-playlist#readme",
+  "dependencies": {
+    "react": "^16.8.4",
+    "webpack": "^4.29.6"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^2.0.0",
+    "css-loader": "^2.1.1",
+    "extract-css-chunks-webpack-plugin": "^4.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.1",
+    "r": "0.0.5",
+    "react-dom": "^16.8.4",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1",
+    "webpack-merge": "^4.2.1"
+  }
+}
