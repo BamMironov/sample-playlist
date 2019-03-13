@@ -1,0 +1,30 @@
+@import "src/assets/vars";
+
+.filters {
+    &__list {
+        background: $background;
+        padding: 12px;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            margin-bottom: 6px;
+        }
+
+        &__title {
+            font-size: 13px;
+            font-weight: 600;
+            color: $titleColor;
+            margin-bottom: 6px;
+        }
+    }
+}
+
+.dropdown {
+    &__wrapper {
+        border: 2px solid $borderColor;
+        padding: 8px;
+        font-size: 13px;
+        background-color: #ffffff;
+    }
+}

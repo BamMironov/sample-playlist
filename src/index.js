@@ -4,6 +4,6 @@ import App from './App';
 import "index.scss";
 
 ReactDOM.render(
-    <App />,
-    document.getElementById("sample-playlist-app")
-  );
+  <App />,
+  document.getElementById("sample-playlist-app")
+);

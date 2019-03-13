@@ -1,3 +1,15 @@
+@import "src/assets/vars";
+@import "src/assets/reset";
+
 #sample-playlist-app {
-    color: blue;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    color: $textColor;
+    margin: 20px auto;
+    max-width: 1080px;
+}
+
+.title {
+    margin-bottom: 6px;
+    font-size: 18px;
 }

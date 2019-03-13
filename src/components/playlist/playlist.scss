@@ -1,0 +1,33 @@
+@import "src/assets/vars";
+
+.playlist {
+    &__grid {
+        border-collapse: collapse;
+        border: 2px solid $borderColor;
+        table-layout: fixed;
+    }
+
+    &__cell {
+        border: 2px solid $borderColor;
+        padding: 8px 6px;
+
+        &_header {
+            background-color: $background;
+            color: $titleColor;
+            font-weight: 600;
+        }
+    }
+
+    &__pagination {
+        display: flex;
+        justify-content: center;
+        margin-top: 12px;
+        position: relative;
+
+        .items-per-page {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+}

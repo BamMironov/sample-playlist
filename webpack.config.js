@@ -28,6 +28,14 @@ const common = {
                     "sass-loader"
                 ]
             },
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader'
+                    },
+                ],
+            }
         ]
     },
     resolve: {
@@ -61,6 +69,7 @@ const common = {
         }),
         new ExtractCssChunks({
             filename: "[name].css",
+            hot: true
         })
     ]
 };
@@ -72,7 +81,7 @@ module.exports = (env, argv) => {
             prodConfig
         ]);
     }
-    
+
     if (argv.mode === 'development') {
         return merge([
             common,

@@ -1,0 +1,25 @@
+@import "src/assets/vars";
+
+.items-per-page {
+    display: flex;
+    border: 2px solid $borderColor;
+
+    &__item {
+        font-size: 13px;
+        width: 29px;
+        height: 29px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        cursor: pointer;
+
+        &:not(:last-child) {
+            border-right: 2px solid $borderColor;
+        }
+
+        &:hover, &_active {
+            background-color: $background;
+        }
+    }
+}
