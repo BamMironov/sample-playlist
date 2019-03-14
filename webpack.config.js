@@ -6,7 +6,7 @@ const devConfig = require('./webpack.config.dev');
 const prodConfig = require('./webpack.config.prod');
 
 const common = {
-    entry: './src/index.js',
+    entry: './index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].bundle.js'
