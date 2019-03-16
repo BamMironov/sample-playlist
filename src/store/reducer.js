@@ -4,7 +4,7 @@ import {
     SET_LIMIT,
     SET_TOTAL_PAGES
 } from './constants';
-import { Direction, SortingBy } from "views/enums";
+import { Direction, SortingBy } from "enums";
 import moment from "moment";
 
 const initialState = {
