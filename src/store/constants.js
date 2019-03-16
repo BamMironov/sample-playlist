@@ -1,0 +1,4 @@
+export const FETCH_TRACKLIST_SUCCESS = 'FETCH_TRACKLIST_SUCCESS';
+export const SET_PAGE = 'SET_PAGE';
+export const SET_LIMIT = 'SET_LIMIT';
+export const SET_TOTAL_PAGES = 'SET_TOTAL_PAGES';

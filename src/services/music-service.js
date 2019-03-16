@@ -5,13 +5,8 @@ class MusicService extends BaseService {
         super("http://localhost:3000");
     }
 
-    getTracks() {
-        return this.getRequest("getTracks", {
-            limit: 10,
-            page: 1,
-            sort_by: 'track_date_created',
-            sort_dir: 'desc'
-        })
+    getTracks(params) {
+        return this.getRequest("getTracks", params)
     }
 }
 
