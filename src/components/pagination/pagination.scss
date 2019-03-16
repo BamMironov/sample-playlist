@@ -39,5 +39,10 @@
             transform: rotate(180deg);
             margin-left: 6px;
         }
+
+        &_inactive {
+            pointer-events: none;
+            opacity: 0.2;
+        }
     }
 }

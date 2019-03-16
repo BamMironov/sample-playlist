@@ -2,20 +2,60 @@ import React, { Component } from "react";
 import "./pagination.scss";
 
 export class Pagination extends Component {
+    state = {
+        start: 1,
+        end: 4
+    }
+
+    get isLeftArrowActive() {
+        return this.state.start > 1;
+    }
+
+    get isRightArriwActive() {
+        return this.state.end < this.props.max;
+    }
+
+    _onLeftArrowClick() {
+        this.setState(prevState => ({ start: --prevState.start, end: --prevState.end }));
+    }
+
+    _onRightArrowClick() {
+        this.setState(prevState => ({ start: ++prevState.start, end: ++prevState.end }));
+    }
+
     render() {
+        const itemClassName = `pagination__item`;
+        const arrowClassName = `pagination__arrow`;
+        const activeClassName = (isActive) => isActive ? itemClassName + '_active' : '';
+        const { start, end } = this.state;
+
         return (
             <div className="pagination">
-                <div className="pagination__arrow pagination__arrow_left"></div>
+                <div className={`${arrowClassName} ${arrowClassName}_left ${!this.isLeftArrowActive ? arrowClassName + '_inactive' : ''}`}
+                    onClick={() => this._onLeftArrowClick()}></div>
 
                 <ul className="pagination__list">
-                    <li className="pagination__item pagination__item_active">1</li>
-                    <li className="pagination__item">2</li>
-                    <li className="pagination__item">3</li>
-                    <li className="pagination__item">4</li>
+                    {range(start, end).map(item => {
+                        return (
+                            <li key={item} 
+                                className={`${itemClassName} ${activeClassName(item === this.props.value)}`}
+                                onClick={() => this.props.onClick(item)}>{item}</li>
+                        );
+                    })}
                 </ul>
 
-                <div className="pagination__arrow pagination__arrow_right"></div>
+                <div className={`${arrowClassName} ${arrowClassName}_right`} onClick={() => this._onRightArrowClick()}></div>
             </div>
         )
     }
-} 
+}
+
+const range = (start = 1, end = 4) => {
+    let result = [];
+
+    for (let i = start; i <= end; i++) {
+       result.push(i);
+    }
+
+    return result;
+};

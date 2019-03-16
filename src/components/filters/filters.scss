@@ -1,6 +1,8 @@
 @import "src/assets/vars";
 
 .filters {
+    max-width: 300px;
+
     &__list {
         background: $background;
         padding: 12px;
@@ -17,14 +19,5 @@
             color: $titleColor;
             margin-bottom: 6px;
         }
-    }
-}
-
-.dropdown {
-    &__wrapper {
-        border: 2px solid $borderColor;
-        padding: 8px;
-        font-size: 13px;
-        background-color: #ffffff;
     }
 }

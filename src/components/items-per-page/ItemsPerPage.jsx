@@ -1,15 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 import "./items-per-page.scss";
 
-export class ItemsPerPage extends Component {
-    render() {
-        return (
-            <ul className="items-per-page">
-                <li className="items-per-page__item items-per-page__item_active">10</li>
-                <li className="items-per-page__item">25</li>
-                <li className="items-per-page__item">50</li>
-                <li className="items-per-page__item">100</li>
-            </ul>
-        );
-    }
+export const ItemsPerPage = (props) => {
+    const className = `items-per-page__item`;
+    const activeClassName = (isActive) => isActive ? className + '_active' : '';
+
+    return (
+        <ul className="items-per-page">
+            {props.items.map((item, i) => {
+                return (
+                    <li key={i} 
+                        className={`${className} ${activeClassName(props.value === item)}`}
+                        onClick={() => props.onClick(item)}>{item}</li>
+                )
+            })}
+        </ul>
+    );
 }

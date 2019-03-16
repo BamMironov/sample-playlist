@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Dropdown } from 'components';
 import "./filters.scss";
 
 export class Filters extends Component {
@@ -10,50 +11,24 @@ export class Filters extends Component {
                 <div className="filters__list">
                     <div className="filters__item">
                         <div className="filters__item__title">Исполнитель</div>
-                        <div className="dropdown">
-                            <div className="dropdown__wrapper">
-                                <div className="dropdown__value">Все</div>
-                                <div className="dropdown__icon"></div>
-                            </div>
-                            <ul className="dropdown__list">
-                                <li className="dropdown__list__item"></li>
-                                <li className="dropdown__list__item"></li>
-                                <li className="dropdown__list__item"></li>
-                            </ul>
-                        </div>
+                        <Dropdown items={fakeBands} />
                     </div>
 
                     <div className="filters__item">
                         <div className="filters__item__title">Жанр</div>
-                        <div className="dropdown">
-                            <div className="dropdown__wrapper">
-                                <div className="dropdown__value">Все</div>
-                                <div className="dropdown__icon"></div>
-                            </div>
-                            <ul className="dropdown__list">
-                                <li className="dropdown__list__item"></li>
-                                <li className="dropdown__list__item"></li>
-                                <li className="dropdown__list__item"></li>
-                            </ul>
-                        </div>
+                        <Dropdown items={fakeGenres} />
                     </div>
 
                     <div className="filters__item">
                         <div className="filters__item__title">Год</div>
-                        <div className="dropdown">
-                            <div className="dropdown__wrapper">
-                                <div className="dropdown__value">Все</div>
-                                <div className="dropdown__icon"></div>
-                            </div>
-                            <ul className="dropdown__list">
-                                <li className="dropdown__list__item"></li>
-                                <li className="dropdown__list__item"></li>
-                                <li className="dropdown__list__item"></li>
-                            </ul>
-                        </div>
+                        <Dropdown items={fakeYears} />
                     </div>
                 </div>
             </div>
         )
     }
 }
+
+const fakeBands = ['Все', 'Led Zeppelin', 'Miles Davis', 'Muddy Waters'];
+const fakeGenres = ["Rock", "Jazz", "Blues"];
+const fakeYears = ["1975", "1959", "1955"];
