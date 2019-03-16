@@ -4,7 +4,8 @@
   "description": "test task",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development --hot",
+    "start": "npm-run-all -p dev-server api-server",
+    "dev-server": "webpack-dev-server --open --mode development --hot",
     "api-server": "node server.js",
     "build-prod": "webpack --mode=production",
     "build-dev": "webpack --mode=development"
@@ -23,8 +24,12 @@
     "axios": "^0.18.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
+    "moment": "^2.24.0",
     "react": "^16.8.4",
     "react-onclickoutside": "^6.8.0",
+    "react-redux": "^6.0.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
     "webpack": "^4.29.6"
   },
   "devDependencies": {
@@ -32,8 +37,11 @@
     "@babel/core": "^7.3.4",
     "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.4",
+    "@babel/plugin-transform-async-to-generator": "^7.3.4",
+    "@babel/plugin-transform-runtime": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "@babel/runtime": "^7.3.4",
     "babel-loader": "^8.0.5",
     "clean-webpack-plugin": "^2.0.0",
     "css-loader": "^2.1.1",
@@ -41,6 +49,7 @@
     "file-loader": "^3.0.1",
     "html-webpack-plugin": "^3.2.0",
     "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
     "r": "0.0.5",
     "react-dom": "^16.8.4",
