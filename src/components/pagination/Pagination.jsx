@@ -1,8 +1,8 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { range } from 'utils';
 import "./pagination.scss";
 
-export class Pagination extends PureComponent {
+export class Pagination extends Component {
     state = {
         start: 1,
         end: this.buildEndPage(4)
