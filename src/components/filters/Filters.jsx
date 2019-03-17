@@ -1,8 +1,39 @@
 import React, { Component } from "react";
 import { Dropdown } from 'components';
+import { range } from "utils";
+import { connect } from "react-redux";
+import moment from "moment";
+import { fetchTrackList, setPage, setGenre, setArtist, setYear } from 'store';
 import "./filters.scss";
 
-export class Filters extends Component {
+class FiltersComponent extends Component {
+    async _onGenreChange(id) {
+        await Promise.all([
+            this.props.dispatch(setPage(1)),
+            this.props.dispatch(setGenre(id))
+        ]);
+
+        this.props.dispatch(fetchTrackList());
+    }
+
+    async _onArtistChange(id) {
+        await Promise.all([
+            this.props.dispatch(setPage(1)),
+            this.props.dispatch(setArtist(id))
+        ]);
+
+        this.props.dispatch(fetchTrackList());
+    }
+
+    async _onYearChange(id) {
+        await Promise.all([
+            this.props.dispatch(setPage(1)),
+            this.props.dispatch(setYear(id))
+        ]);
+
+        this.props.dispatch(fetchTrackList());
+    }
+
     render() {
         return (
             <div className="filters">
@@ -11,17 +42,17 @@ export class Filters extends Component {
                 <div className="filters__list">
                     <div className="filters__item">
                         <div className="filters__item__title">Исполнитель</div>
-                        <Dropdown items={fakeBands} />
+                        <Dropdown items={this.props.artists} onClick={value => this._onArtistChange(value)} />
                     </div>
 
                     <div className="filters__item">
                         <div className="filters__item__title">Жанр</div>
-                        <Dropdown items={fakeGenres} />
+                        <Dropdown items={this.props.genres} onClick={value => this._onGenreChange(value)} />
                     </div>
 
                     <div className="filters__item">
                         <div className="filters__item__title">Год</div>
-                        <Dropdown items={fakeYears} />
+                        <Dropdown items={years} onClick={value => this._onYearChange(value)} />
                     </div>
                 </div>
             </div>
@@ -29,6 +60,10 @@ export class Filters extends Component {
     }
 }
 
-const fakeBands = ['Все', 'Led Zeppelin', 'Miles Davis', 'Muddy Waters'];
-const fakeGenres = ["Rock", "Jazz", "Blues"];
-const fakeYears = ["1975", "1959", "1955"];
+const mapStateToProps = ({entitiesStore}) => ({
+    genres: entitiesStore.genres,
+    artists: entitiesStore.artists,
+});
+const years = range(1945, +moment().year()).map(year => ({ id: year, title: year }));
+
+export const Filters = connect(mapStateToProps)(FiltersComponent);

@@ -1,11 +1,16 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import onClickOutside from "react-onclickoutside";
 import "./dropdown.scss";
 
-class DropdownComponent extends Component {
+const defaultItem = {
+    id: null,
+    title: 'Все'
+}
+
+class DropdownComponent extends PureComponent {
     state = {
         show: false,
-        value: 'Все'
+        value: defaultItem,
     }
 
     get activeIconClass() {
@@ -17,15 +22,19 @@ class DropdownComponent extends Component {
     }
 
     onItemClick(item) {
-        this.setState({ value: item, show: false });
+        this.setState({ value: item, show: false, query: item.title });
+        this.props.onClick(item.id);
     }
 
     renderList() {
+        const items = this.props.items.slice();
+        items.unshift(defaultItem);
+
         return (
             <ul className="dropdown__list">
-                {this.props.items.map((item, i) => {
+                {items.map(item => {
                     return (
-                        <li key={i} className="dropdown__list__item" onClick={() => this.onItemClick(item)}>{item}</li>
+                        <li key={item.id} className="dropdown__list__item" onClick={() => this.onItemClick(item)}>{item.title}</li>
                     )
                 })}
             </ul>
@@ -42,7 +51,7 @@ class DropdownComponent extends Component {
         return (
             <div className="dropdown">
                 <div className="dropdown__wrapper" onClick={() => this.toggleList()}>
-                    <div className="dropdown__value">{value}</div>
+                    <div className="dropdown__value">{value.title}</div>
                     <div className={"dropdown__icon " + this.activeIconClass }></div>
                 </div>
                 {show && this.renderList()}

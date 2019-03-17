@@ -2,31 +2,36 @@
 
 .dropdown {
     position: relative;
-
+    
     &__wrapper {
-        border: 2px solid $borderColor;
-        padding: 8px;
-        font-size: 13px;
-        background-color: #ffffff;
         display: flex;
-        justify-content: space-between;
+        position: relative;
         cursor: pointer;
     }
 
     &__value {
+        border: 2px solid $borderColor;
+        padding: 8px 30px 8px 8px;
+        font-size: 13px;
+        background-color: #ffffff;
+        display: flex;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        width: 100%;
     }
 
     &__icon {
         background: url("../../assets/icons/dropdown-arrow.svg") no-repeat;
         width: 12px;
         height: 12px;
-        transform: rotate(90deg);
+        transform: rotate(-90deg);
+        position: absolute;
+        top: 10px;
+        right: 12px;
 
         &_active {
-            transform: rotate(-90deg);
+            transform: rotate(90deg);
         }
     }
 
@@ -39,6 +44,8 @@
         z-index: 1;
         background-color: #ffffff;
         box-sizing: border-box;
+        max-height: 300px;
+        overflow-y: auto;
 
         &__item {
             padding: 8px;
