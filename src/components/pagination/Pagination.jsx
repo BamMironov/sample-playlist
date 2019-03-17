@@ -1,10 +1,15 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
+import { range } from 'utils';
 import "./pagination.scss";
 
-export class Pagination extends Component {
+export class Pagination extends PureComponent {
     state = {
         start: 1,
-        end: 4
+        end: this.buildEndPage(4)
+    }
+
+    buildEndPage(number) {
+        return this.props.max < number ? this.props.max : number;
     }
 
     get isLeftArrowActive() {
@@ -35,7 +40,7 @@ export class Pagination extends Component {
                     onClick={() => this._onLeftArrowClick()}></div>
 
                 <ul className="pagination__list">
-                    {range(start, end).map(item => {
+                    {range(start, this.buildEndPage(end)).map(item => {
                         return (
                             <li key={item} 
                                 className={`${itemClassName} ${activeClassName(item === this.props.value)}`}
@@ -44,18 +49,8 @@ export class Pagination extends Component {
                     })}
                 </ul>
 
-                <div className={`${arrowClassName} ${arrowClassName}_right`} onClick={() => this._onRightArrowClick()}></div>
+                <div className={`${arrowClassName} ${arrowClassName}_right ${!this.isRightArriwActive ? arrowClassName + '_inactive' : ''}`} onClick={() => this._onRightArrowClick()}></div>
             </div>
         )
     }
 }
-
-const range = (start = 1, end = 4) => {
-    let result = [];
-
-    for (let i = start; i <= end; i++) {
-       result.push(i);
-    }
-
-    return result;
-};
