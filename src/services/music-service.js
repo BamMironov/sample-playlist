@@ -8,6 +8,14 @@ class MusicService extends BaseService {
     getTracks(params) {
         return this.getRequest("getTracks", params)
     }
+
+    getArtists(params) {
+        return this.getRequest("getArtists", params)
+    }
+
+    getGenres(params) {
+        return this.getRequest("getGenres", params)
+    }
 }
 
 export default new MusicService();
