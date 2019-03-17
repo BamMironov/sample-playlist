@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Playlist, Filters } from 'components';
-import { Direction, SortingBy } from "./enums";
 import { connect } from 'react-redux';
-import { fetchTrackList } from 'store';
+import { fetchTrackList, fetchGenresList, fetchArtistsList } from 'store';
 import "./main.scss";
 
  class MainView extends Component {
     async componentDidMount() {
         this.props.dispatch(fetchTrackList());
+        this.props.dispatch(fetchGenresList());
+        this.props.dispatch(fetchArtistsList());
     }
 
     render() {
